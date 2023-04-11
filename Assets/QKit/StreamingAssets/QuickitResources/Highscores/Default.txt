@@ -1,0 +1,6 @@
+NameA:100
+NameB:400
+NameC:500
+NameD:200
+NameE:300
+NameF:100

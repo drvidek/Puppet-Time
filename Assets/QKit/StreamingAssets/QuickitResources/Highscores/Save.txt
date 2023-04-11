@@ -1,0 +1,10 @@
+New2:600
+NameC:500
+NameB:400
+NameE:300
+NameD:200
+NameA:100
+New1:60
+New0:20
+
+
