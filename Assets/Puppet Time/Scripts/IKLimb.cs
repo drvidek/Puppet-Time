@@ -26,6 +26,7 @@ public class IKLimb : MonoBehaviour
     protected Quaternion[] _startRotationBone;
     protected Quaternion _startRotationTarget;
     protected Quaternion _startRotationRoot;
+    PlayerController doll;
 
     private bool _isRagdoll;
 
@@ -44,6 +45,7 @@ public class IKLimb : MonoBehaviour
 
     void Initialise()
     {
+        doll = GetComponentInParent<PlayerController>();
         //set the size of the arrways based on our IK rig size
         _joints = new Transform[_chainLength + 1];
         _positions = new Vector3[_chainLength + 1];
@@ -109,7 +111,7 @@ public class IKLimb : MonoBehaviour
         if (_bonesLength.Length != _chainLength)
             Initialise();
 
-        if (!PlayerController.main.IsHeld)
+        if (!doll.IsHeld)
         {
             if (!_isRagdoll)
                 ToggleKinematicLimb(false);

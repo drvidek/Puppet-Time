@@ -23,30 +23,30 @@ public class PlayerController : MonoBehaviour
 
     public float Scale => transform.parent.localScale.x;
 
-    #region Singleton + Awake
-    private static PlayerController _singleton;
-    public static PlayerController main
-    {
-        get => _singleton;
-        private set
-        {
-            if (_singleton == null)
-            {
-                _singleton = value;
-            }
-            else if (_singleton != value)
-            {
-                Debug.LogWarning("PlayerController instance already exists, destroy duplicate!");
-                Destroy(value);
-            }
-        }
-    }
+    //#region Singleton + Awake
+    //private static PlayerController _singleton;
+    //public static PlayerController main
+    //{
+    //    get => _singleton;
+    //    private set
+    //    {
+    //        if (_singleton == null)
+    //        {
+    //            _singleton = value;
+    //        }
+    //        else if (_singleton != value)
+    //        {
+    //            Debug.LogWarning("PlayerController instance already exists, destroy duplicate!");
+    //            Destroy(value);
+    //        }
+    //    }
+    //}
 
-    private void Awake()
-    {
-        main = this;
-    }
-    #endregion
+    //private void Awake()
+    //{
+    //    main = this;
+    //}
+    //#endregion
 
 
     public Vector3 AverageDirection

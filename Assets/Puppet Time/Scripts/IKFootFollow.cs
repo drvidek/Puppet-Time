@@ -9,6 +9,8 @@ public class IKFootFollow : MonoBehaviour
     [SerializeField] private float _stepHeight;
     [SerializeField] bool _isMoving;
     Vector3 _currentPosition;
+    PlayerController doll;
+
 
     public float DistanceToTarget => Vector3.Distance(Target.position, transform.position);
     public float MaxDistance => _maxDistanceFromTarget;
@@ -17,6 +19,7 @@ public class IKFootFollow : MonoBehaviour
 
     private void Start()
     {
+        doll = GetComponentInParent<PlayerController>();
         _currentPosition = transform.position;
     }
 
@@ -52,7 +55,7 @@ public class IKFootFollow : MonoBehaviour
             transform.position = Vector3.Lerp(initPosition, destination, lerp);
             transform.up = Vector3.Lerp(initUp, destinationUp, lerp);
             transform.position += Vector3.up * Mathf.Sin(lerp * Mathf.PI) * _stepHeight;
-            transform.forward = Vector3.Lerp(initForward, PlayerController.main.Hips.forward, lerp);
+            transform.forward = Vector3.Lerp(initForward, doll.Hips.forward, lerp);
             yield return new WaitForFixedUpdate();
         }
 
@@ -68,7 +71,7 @@ public class IKFootFollow : MonoBehaviour
         //     yield return new WaitForFixedUpdate();
         // }
         transform.up = destinationUp;
-        transform.forward = PlayerController.main.Hips.forward;
+        transform.forward = doll.Hips.forward;
         transform.position = destination;
         _currentPosition = transform.position;
         _isMoving = false;
